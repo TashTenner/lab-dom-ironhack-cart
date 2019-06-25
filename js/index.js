@@ -49,6 +49,15 @@ function createQuantityNode() {}
 function createItemNode(dataType, itemData) {}
 
 function createNewItemRow(itemName, itemUnitPrice) {
+  let newRow = document.createElement("div");
+  let parent = document.querySelector(".wrapper");
+  let rowThatCreatesRow = document.querySelector(".create-line");
+  newRow.setAttribute("class", "line2");
+  parent.insertBefore(newRow, rowThatCreatesRow);
+  //console.log(parent);
+
+  createNewItem(itemName);
+
   itemName = document.querySelector(".new-name").value;
   let resetValue1 = document.querySelector(".new-name");
   resetValue1.value = "";
@@ -58,7 +67,18 @@ function createNewItemRow(itemName, itemUnitPrice) {
   resetValue2.value = "";
 }
 
-function createNewItem() {}
+function createNewItem(itemName) {
+  let newRow = document.createElement("div");
+  newRow.setAttribute("class", "product-name");
+  let spanItem = document.createElement("span");
+  newRow.appendChild(spanItem);
+  spanItem.innerHTML = itemName;
+
+  let parent = document.querySelector(".wrapper");
+
+  parent.appendChild(newRow);
+  console.log(newRow);
+}
 
 window.onload = function() {
   var calculatePriceButton = document.getElementById("calc-prices-button");
